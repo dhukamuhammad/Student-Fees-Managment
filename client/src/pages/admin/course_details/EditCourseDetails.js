@@ -30,6 +30,7 @@ const EditCourseDetails = () => {
         }
     };
 
+    // edite code 
     const handleChangeEdit = (e) => {
         const { name, value } = e.target;
         seteditcourse((prevData) => ({
@@ -46,6 +47,8 @@ const EditCourseDetails = () => {
             console.error("Error editing member data:", error);
         }
     };
+    // edite code 
+
 
 
     return (
@@ -87,7 +90,7 @@ const EditCourseDetails = () => {
 
                     <div className='add_clan_btn'>
                         <button
-                        onClick={handleEditeCourseDetails}
+                            onClick={handleEditeCourseDetails}
                         >Edit Course</button>
                     </div>
                 </div>

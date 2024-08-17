@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import Navbar from "../admin/layout/Navbar";
 import Navbar from "../../component/admin/Navbar"
-// import Sidebar from "../../component/admin/Sidebar";
 import Sidebar from "../../component/admin/Sidebar";
 import "../../assets/css/main.css";
 

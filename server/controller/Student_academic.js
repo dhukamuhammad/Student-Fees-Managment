@@ -1,5 +1,6 @@
 const connection = require("../config/connection");
 
+// get code 
 const getStudent_academic = (req, res) => {
   const sql = `SELECT  student_academic  .*, 
              student_registation.name,
@@ -22,6 +23,7 @@ const getStudent_academic = (req, res) => {
   });
 };
 
+// get code per id 
 const getPerAcademic = async (req, res) => {
   const q = `SELECT student_academic .*,
       student_registation.name,
@@ -66,32 +68,7 @@ const getPercourse = async (req, res) => {
   });
 };
 
-// const getPerAcademic = async (req, res) => {
-//   const q = `
-//     SELECT
-//       student_academic.*,
-//       student_registation.name
-//       course_details.course_name,
-//       course_details.duration,
-//       DATE_FORMAT(student_academic.join_date, '%Y-%m-%d') AS join_date,
-//       DATE_FORMAT(student_academic.finished_date, '%Y-%m-%d') AS finished_date
-//     FROM
-//       student_academic
-//     JOIN
-//       student_registation ON student_academic.s_id = student_registation.id
-//     JOIN
-//       course_details ON student_academic.c_id = course_details.id
-//     WHERE
-//       student_academic.id = ?`;  // Specify the table name here
-
-//   connection.query(q, [req.params.id], (err, data) => {
-//     if (err) {
-//       return res.status(500).json(err);
-//     }
-//     return res.json(data);
-//   });
-// };
-
+// add code 
 const addAcademic = async (req, res) => {
   try {
     const { s_id, c_id, fess, join_date, finished_date } = req.body;
@@ -109,6 +86,7 @@ const addAcademic = async (req, res) => {
   }
 };
 
+//delete code 
 const deleteAcademic = async (req, res) => {
   const id = req.params.id;
   const query = "DELETE FROM student_academic WHERE id = ?";
@@ -122,6 +100,7 @@ const deleteAcademic = async (req, res) => {
   });
 };
 
+// edite code 
 const editAcademic = async (req, res) => {
   try {
     const id = req.params.id;
@@ -138,6 +117,7 @@ const editAcademic = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
 module.exports = {
   getStudent_academic,
   getPerAcademic,

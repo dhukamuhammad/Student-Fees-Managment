@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-// import PORT from '../../../assets/constant/URL';
 import { useNavigate } from 'react-router-dom';
 
 const AddCourseDetails = () => {
@@ -13,6 +12,7 @@ const AddCourseDetails = () => {
 
     const navigate = useNavigate()
 
+    // add code 
     const handleChangeAdd = (e) => {
         const { name, value } = e.target;
         setaddcourse((prevData) => ({
@@ -35,6 +35,8 @@ const AddCourseDetails = () => {
             console.error("Error fetching clan data:", error)
         }
     }
+    // add code 
+
     return (
         <section id='content'>
             <main>

@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-
 import Student_registration from "../../pages/admin/student_registration/Student_registration";
 import Add_student from "../../pages/admin/student_registration/Add_student";
 import Edit_student from "../../pages/admin/student_registration/Edit_student";

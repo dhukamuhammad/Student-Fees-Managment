@@ -1,7 +1,11 @@
 const connection = require("../config/connection");
 
+// get code 
 const getstudent = (req, res) => {
-  const sql = "SELECT * FROM student_registation";
+  const sql = `SELECT student_registation.*,
+               DATE_FORMAT(registation_date, '%Y-%m-%d') AS registation_date
+               FROM student_registation`;
+  // const sql = "SELECT * FROM student_registation";
   connection.query(sql, (error, result) => {
     if (error) {
       console.log("Error Getting Data Brand Table in server.js" + error);
@@ -9,6 +13,8 @@ const getstudent = (req, res) => {
     return res.json(result);
   });
 };
+
+// get code per id 
 const getperstudent = (req, res) => {
   const id = req.params.id;
   const sql = "SELECT * FROM student_registation WHERE id = ?";
@@ -20,6 +26,7 @@ const getperstudent = (req, res) => {
   });
 };
 
+// add code 
 const addStudentData = async (req, res) => {
   try {
     const {
@@ -67,6 +74,7 @@ const addStudentData = async (req, res) => {
   }
 };
 
+//delete code 
 const deleteStudent = async (req, res) => {
   const id = req.params.id;
   console.log(id);
@@ -86,6 +94,7 @@ const deleteStudent = async (req, res) => {
   });
 };
 
+// edite code 
 const editstudent = async (req, res) => {
   try {
     const id = req.params.id;

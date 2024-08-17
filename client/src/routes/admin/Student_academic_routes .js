@@ -1,7 +1,6 @@
 import React from "react";
 import Student_academic from "../../pages/admin/student_Academin/Student_academic ";
 import AddStudent_academic from "../../pages/admin/student_Academin/AddStudent_academic ";
-
 import EditStudent_academic from "../../pages/admin/student_Academin/EditStudent_academic ";
 import { Route, Routes } from "react-router-dom";
 import HOC from "../../component/admin/HOC";

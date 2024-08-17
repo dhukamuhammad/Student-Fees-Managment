@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-// import PORT from '../../../assets/constant/URL'
 import Delete from '../../../component/admin/CustomDelete'
 
 const CourseDetails = () => {
@@ -11,6 +10,7 @@ const CourseDetails = () => {
         fetchCourseDetails()
     }, [])
 
+    // fetch a course data
     const fetchCourseDetails = async () => {
         try {
             const res = await axios(`http://localhost:4002/getCourseDetails`)
@@ -20,6 +20,7 @@ const CourseDetails = () => {
         }
     }
 
+    // delete data
     const deleteCourseDetails = async (id) => {
         try {
             await axios.delete(`http://localhost:4002/deleteCourse/${id}`);

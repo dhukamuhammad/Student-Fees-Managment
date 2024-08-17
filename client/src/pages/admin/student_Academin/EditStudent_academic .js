@@ -9,7 +9,7 @@ function EditStudentAcademic() {
     name: "",
     course_name: "",
     join_date: "",
-    fess:"",
+    fess: "",
     finished_date: "",
   });
 
@@ -29,6 +29,7 @@ function EditStudentAcademic() {
     fetchCourses();
   }, [location.state.id]);
 
+  // fetch data 
   const fetchStudents = async () => {
     try {
       const response = await axios.get("http://localhost:4002/getstudent");
@@ -61,7 +62,9 @@ function EditStudentAcademic() {
       console.error("Error fetching academic data:", error);
     }
   };
+  // fetch data 
 
+  // handlechange
   const handleChangeEdit = (e) => {
     const { name, value } = e.target;
     setEditAcademic((prevData) => ({
@@ -130,6 +133,7 @@ function EditStudentAcademic() {
       console.error("Error editing academic data:", error);
     }
   };
+  // handlechange
 
   return (
     <section id="content">
@@ -214,7 +218,7 @@ function EditStudentAcademic() {
               name="fess"
               value={editAcademic.fess}
               onChange={handleChangeEdit}
-              // disabled
+            // disabled
             />
           </div>
 

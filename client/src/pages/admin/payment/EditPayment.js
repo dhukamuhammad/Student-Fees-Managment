@@ -3,7 +3,6 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function EditPayment() {
-  const location = useLocation();
   const [students, setStudents] = useState([]);
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -17,6 +16,8 @@ function EditPayment() {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+
 
   useEffect(() => {
     fetchStudents();
@@ -50,6 +51,7 @@ function EditPayment() {
     }
   };
 
+  // serch data for student
   const handleSearchChange = (e) => {
     const query = e.target.value;
 
@@ -147,6 +149,8 @@ function EditPayment() {
               name="type"
               value={addPayment.type || ""}
               onChange={handleChangeAdd}
+              style={{ width: "100%", padding: "12px", marginTop: "10px", marginBottom: "10px" }}
+
             >
               <option value="">Select</option>
               <option value="Term 1">Term 1</option>

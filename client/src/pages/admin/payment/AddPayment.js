@@ -3,14 +3,18 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const AddPayment = () => {
+    const today = new Date().toISOString().split("T")[0]
+
     const [students, setStudents] = useState([]);
+    // search
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+
     const [addPayment, setAddPayment] = useState({
         stud_id: '',
         amount: '',
         type: '',
-        due_date: '',
+        due_date: today,
         description: '',
     });
 
@@ -31,6 +35,7 @@ const AddPayment = () => {
         }
     };
 
+    // search data for student
     const handleSearchChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
@@ -51,6 +56,7 @@ const AddPayment = () => {
         setFilteredStudents([]);
     };
 
+    // add code
     const handleChangeAdd = (e) => {
         const { name, value } = e.target;
         setAddPayment((prevPayment) => ({
@@ -67,7 +73,7 @@ const AddPayment = () => {
                 stud_id: '',
                 amount: '',
                 type: '',
-                due_date: '',
+                due_date: today,
                 description: '',
             });
             navigate("/payment");
@@ -75,6 +81,9 @@ const AddPayment = () => {
             console.log("Error adding student:", error);
         }
     };
+
+    // add code
+
 
     return (
         <section id="content">
@@ -127,6 +136,7 @@ const AddPayment = () => {
                             name="type"
                             value={addPayment.type}
                             onChange={handleChangeAdd}
+                            style={{width:"100%",padding:"12px",marginTop:"10px",marginBottom:"10px"}}
                         >
                             <option value="">Null</option>
                             <option value="Term 1">Term 1</option>

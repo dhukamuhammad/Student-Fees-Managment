@@ -1,18 +1,19 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import HOC from "../../../component/admin/HOC";
 import "../../../assets/css/Student.css";
 import { NavLink } from "react-router-dom";
 import Delete from "../../../component/admin/CustomDelete";
 
 function Student_registration() {
+
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
     fetchStudents();
   }, []);
+
   const fetchStudents = async () => {
     try {
       const response = await axios.get("http://localhost:4002/getstudent");
@@ -21,6 +22,8 @@ function Student_registration() {
       console.error("Error fetching student data:", error);
     }
   };
+
+  // delete data
   const deleteStudent = async (id) => {
     try {
       await axios.delete(`http://localhost:4002/deletestudent/${id}`);
@@ -32,7 +35,9 @@ function Student_registration() {
 
   return (
     <>
+      {/*sidebar component */}
       <HOC />
+      {/*sidebar component */}
 
       <section id="content">
         <main>
@@ -54,11 +59,8 @@ function Student_registration() {
                   <th>Name</th>
                   <th>Gender</th>
                   <th>Address</th>
-
                   <th>Registration Date</th>
                   <th>Action</th>
-
-                  <th></th>
                 </tr>
               </thead>
               <tbody>

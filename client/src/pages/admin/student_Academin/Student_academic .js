@@ -21,6 +21,7 @@ function Student_academic() {
     }
   };
 
+  // calulate data 
   const calculateApproxDate = (joinDate, duration) => {
     const jndate = new Date(joinDate.split("-").reverse().join("-"));
     let date = jndate.getDate();
@@ -38,6 +39,7 @@ function Student_academic() {
     )}-${year}`;
   };
 
+  // delete data 
   const deleteStudentAcademic = async (id) => {
     try {
       await axios.delete(`http://localhost:4002/deleteAcademic/${id}`);

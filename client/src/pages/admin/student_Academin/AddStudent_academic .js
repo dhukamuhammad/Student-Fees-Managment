@@ -6,9 +6,11 @@ function AddStudent_academic() {
   const [course, setcourse] = useState([]);
   const [students, setStudents] = useState([]);
 
+  // serch student data
   const [filteredStudents, setFilteredStudents] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
+  // serch course data
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [courseSearchQuery, setCourseSearchQuery] = useState("");
   const [addcourse, setAddCourse] = useState({
@@ -48,6 +50,7 @@ function AddStudent_academic() {
     }
   };
 
+  // add student 
   const handleChangeAdd = (e) => {
     const { name, value } = e.target;
     setAddCourse((prevCourse) => ({
@@ -67,6 +70,7 @@ function AddStudent_academic() {
     setFilteredStudents(filtered);
   };
 
+  // select student
   const handleSelectStudent = async (student) => {
     // console.log(student);
 

@@ -4,7 +4,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Add_student() {
-  const Navigate = useNavigate();
+
+  const today = new Date().toISOString().split("T")[0]
+
   const [student, setstudent] = useState({
     name: "",
     middle_name: "",
@@ -16,9 +18,12 @@ function Add_student() {
     city: "",
     gender: "",
     profile_pic: null,
-    registation_date: "",
+    registation_date: today,
   });
-  console.log(student);
+
+  const Navigate = useNavigate();
+
+  // add code 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setstudent((prevData) => ({
@@ -62,7 +67,7 @@ function Add_student() {
         city: "",
         gender: "",
         profile_pic: null,
-        registation_date: "",
+        registation_date: today,
       });
       Navigate("/student_registration");
     } catch (error) {
@@ -72,7 +77,9 @@ function Add_student() {
 
   return (
     <>
+      {/*sidebar component */}
       <HOC />
+      {/*sidebar component */}
 
       <section id="content">
         <main>

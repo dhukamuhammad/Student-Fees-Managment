@@ -17,9 +17,7 @@ const Payment = () => {
       console.log(error);
     }
   };
-
-
-
+  // delete data 
   const deletePayment = async (id) => {
     try {
       await axios.delete(`http://localhost:4002/deletePayment/${id}`);

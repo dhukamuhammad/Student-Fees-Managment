@@ -4,8 +4,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function EditStudent() {
-  const location = useLocation();
-  const Navigate = useNavigate();
+
   const [student, setStudent] = useState({
     name: "",
     middle_name: "",
@@ -19,6 +18,10 @@ function EditStudent() {
     profile_pic: "",
     registration_date: "",
   });
+
+  const location = useLocation();
+  const Navigate = useNavigate();
+
 
   useEffect(() => {
     if (location.state && location.state.id) {
@@ -49,6 +52,7 @@ function EditStudent() {
     }
   };
 
+  // edite code 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setStudent((prevStudent) => ({
@@ -89,7 +93,7 @@ function EditStudent() {
             "Content-Type": "multipart/form-data",
           },
         }
-        
+
       );
       Navigate("/student_registration");
     } catch (error) {
@@ -99,7 +103,9 @@ function EditStudent() {
 
   return (
     <>
+      {/*sidebar component */}
       <HOC />
+      {/*sidebar component */}
 
       <section id="content">
         <main>

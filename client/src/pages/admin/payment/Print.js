@@ -6,6 +6,9 @@ import html2canvas from "html2canvas";
 import "../../../assets/css/print.css"
 
 function Print() {
+
+  const today = new Date().toISOString().split("T")[0]
+
   const location = useLocation();
   const [print, setPrint] = useState({});
   const [course, setCourse] = useState({});
@@ -31,6 +34,7 @@ function Print() {
     }
   };
 
+  // fetch stud payment data 
   const fetchstdpayment = async (id) => {
     try {
       const response = await axios.get(`http://localhost:4002/getPaymentstdID/${id}`);
@@ -44,6 +48,7 @@ function Print() {
     }
   };
 
+  // fetch course data
   const fetchCourse = async (stud_id) => {
     try {
       const response = await axios.get(`http://localhost:4002/getPercourse/${stud_id}`);
@@ -53,6 +58,7 @@ function Print() {
     }
   };
 
+  // print the pdf 
   const handlePrint = () => {
     const input = document.getElementById("content-to-print");
     const printButton = document.querySelector(".btn-print-download");
@@ -92,7 +98,7 @@ function Print() {
         <main>
           <div className="container fade-in-up" id="content-to-print">
             <div className="header">
-              <img src={require('../../../assets/images/download.png')} style={{width:"120px"}} />
+              <img src={require('../../../assets/images/download.png')} style={{ width: "120px" }} />
             </div>
 
             <div className="customer-info">
@@ -103,7 +109,7 @@ function Print() {
                 <strong>Course:</strong> {course.course_name}
               </div>
               <div>
-                <strong>From:</strong> 01-Jul-24
+                <strong>From:</strong> {today}
               </div>
             </div>
 
@@ -122,7 +128,7 @@ function Print() {
               </div>
             </div>
 
-            <table>
+            <table className="print_table">
               <thead>
                 <tr>
                   <th>Type</th>
@@ -151,9 +157,9 @@ function Print() {
 
             <div className="payment-detail">
               <h3>Payment Detail:</h3>
-              <div style={{display:"flex", gap:"30px",alignItems:"center"}}>
+              <div style={{ display: "flex", gap: "30px", alignItems: "center" }}>
                 <div className="qr-code">
-                  <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Doe%20John%0ABank%3A%20HDFC%0AAC%20No%3A%204003830171874018%0AIFSC%3A%20HDFC09112" alt="QR Code for payment details" width="150" height="150" />
+                  <img src={require("../../../assets/images/qrcode.jpg")} alt="QR Code for payment details" width="150" height="150" />
                 </div>
                 <div className="payment-info">
                   <div>

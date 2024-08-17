@@ -1,6 +1,6 @@
-// File: controller/Payment.js
 const connection = require("../config/connection");
 
+// get code 
 const getpayment = (req, res) => {
   const sql = `
     SELECT payment.*,
@@ -20,6 +20,7 @@ const getpayment = (req, res) => {
   });
 };
 
+// get code per id 
 const getPaymentParID = (req, res) => {
   const paymentId = req.params.id;
   const sql = `
@@ -40,8 +41,6 @@ const getPaymentParID = (req, res) => {
     res.json(results);
   });
 };
-
-
 
 const getPaymentstdID = (req, res) => {
   const paymentId = req.params.id;
@@ -64,7 +63,7 @@ const getPaymentstdID = (req, res) => {
   });
 };
 
-
+// add code 
 const addPayment = async (req, res) => {
   try {
     const { stud_id, amount, type, due_date, description } = req.body;
@@ -82,6 +81,7 @@ const addPayment = async (req, res) => {
   }
 };
 
+//delete code 
 const editPayment = async (req, res) => {
   try {
     const id = req.params.id;
@@ -99,6 +99,7 @@ const editPayment = async (req, res) => {
   }
 };
 
+// edite code 
 const deletePayment = async (req, res) => {
   const id = req.params.id;
   const query = "DELETE FROM payment WHERE id = ?";

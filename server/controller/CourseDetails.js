@@ -1,5 +1,6 @@
 const connection = require("../config/connection");
 
+// get code 
 const getCourseDetails = (req, res) => {
   const sql = "SELECT * FROM course_details";
   connection.query(sql, (error, result) => {
@@ -10,6 +11,7 @@ const getCourseDetails = (req, res) => {
   });
 };
 
+// get code per id 
 const getPerCourseDetails = async (req, res) => {
   const q = "SELECT * FROM course_details WHERE id = ?";
   connection.query(q, [req.params.id], (err, data) => {
@@ -20,6 +22,7 @@ const getPerCourseDetails = async (req, res) => {
   });
 };
 
+// add code 
 const addCourseDetails = async (req, res) => {
   try {
     const { course_name, description, fees, duration } = req.body;
@@ -37,6 +40,7 @@ const addCourseDetails = async (req, res) => {
   }
 };
 
+// delete code 
 const deleteCourse = async (req, res) => {
   const id = req.params.id;
   const query = "DELETE FROM course_details WHERE id = ?";
@@ -50,6 +54,7 @@ const deleteCourse = async (req, res) => {
   });
 };
 
+// edite code 
 const editCourseDetails = async (req, res) => {
   try {
     const id = req.params.id;
